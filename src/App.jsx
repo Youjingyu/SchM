@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Flex, WhiteSpace } from 'antd-mobile';
 
-var a = 1;
+var a = 1
 if(a == '') {
   a = 0;
 }
