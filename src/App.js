@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './style/App.scss';
 import { Flex, WhiteSpace } from 'antd-mobile';
 
 let a = 1;
