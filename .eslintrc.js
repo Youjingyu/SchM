@@ -36,6 +36,8 @@ module.exports = {
         // function 定义时可以不加空格
         'space-before-function-paren': [0],
         // 不检查模板字符串格式
-        'no-template-curly-in-string': [0]
+        'no-template-curly-in-string': [0],
+        // 禁止使用var
+        'no-var': [2]
     }
 }
