@@ -1,8 +1,8 @@
 import Immutable from 'immutable'
-import {SET_STATE, REQUEST_POSTS, RECEIVE_POSTS} from '../Action/Index'
-import {RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA} from '../Action/Index'
-import {DELETE_ITEM} from '../Action/Index'
-import {GET_DATA_START , GET_DATA_SUCCESS, TEST_DISPATCH} from '../Action/Index'
+import {SET_STATE, REQUEST_POSTS, RECEIVE_POSTS} from '../Action/index'
+import {RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA} from '../Action/index'
+import {DELETE_ITEM} from '../Action/index'
+import {GET_DATA_START , GET_DATA_SUCCESS, TEST_DISPATCH} from '../Action/index'
 
 
 //const initialState = Immutable.fromJS({}) //=Immutable.Map({})
