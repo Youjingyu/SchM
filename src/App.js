@@ -1,40 +1,13 @@
-import React, { Component } from 'react';
-import './Style/app.scss';
-import { Flex, WhiteSpace } from 'antd-mobile';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import route from './Router/route'; // 路由配置
+import store from './Redux/Store/store';
+import './Style/common.scss';
 
-let a = 1;
-if(a == '') {
-  a = 0;
-}
-const PlaceHolder = props => (
-  <div style={{
-    backgroundColor: '#ebebef',
-    color: '#bbb',
-    textAlign: 'center',
-    height: '0.6rem',
-    lineHeight: '0.6rem',
-    width: '100%'
-  }} {...props}
-  >Item</div>
+ReactDOM.render(
+    <Provider store={store}>
+        {route}
+    </Provider>,
+    document.getElementById('root')
 );
-class App extends Component {
-  render () {
-    return (
-      <div className="flex-container">
-        <div className="sub-title">基本</div>
-        <Flex>
-          <Flex.Item><PlaceHolder /></Flex.Item>
-          <Flex.Item><PlaceHolder /></Flex.Item>
-        </Flex>
-        <WhiteSpace size="lg" />
-        <Flex>
-          <Flex.Item><PlaceHolder /></Flex.Item>
-          <Flex.Item><PlaceHolder /></Flex.Item>
-          <Flex.Item><PlaceHolder /></Flex.Item>
-        </Flex>
-      </div>
-    );
-  }
-}
-
-export default App;
