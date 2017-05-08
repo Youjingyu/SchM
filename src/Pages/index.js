@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import '../Style/app.scss';
 import { Grid } from 'antd-mobile';
 // import Grid from 'antd-mobile/lib/grid';
-
+// const week = [{text: '周日'}, {text: '周一'}, {text: '周二'}, {text: '周三'}, {text: '周四'}, {text: '周五'}, {text: '周六'}];
+const week = Array.from(['日', '一', '二', '三', '四', '五', '六'].map((_val, i) => ({
+  icon: null,
+  text: `周${_val}`
+})));
 const data1 = Array.from(new Array(5)).map((_val, i) => ({
-  img: 'https://zos.alipayobjects.com/rmsportal/wIjMDnsrDoPPcIV.png',
+  // img: 'https://zos.alipayobjects.com/rmsportal/wIjMDnsrDoPPcIV.png',
   text: `name${i}`
 }));
 class App extends Component {
@@ -12,6 +16,7 @@ class App extends Component {
     return (
     <div>
       <div className="sub-title">custom content</div>
+      <Grid data={week} columnNum={7} />
       <Grid data={data1} columnNum={3} hasLine={false}
             renderItem={(dataItem, index) => (
               <div style={{ margin: '0.16rem', background: '#f7f7f7', textAlign: 'center' }}>

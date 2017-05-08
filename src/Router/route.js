@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
 import { HashRouter, BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-import index from '../Component/index';
+import index from '../Pages/index';
 
 class Roots extends Component {
   render() {
