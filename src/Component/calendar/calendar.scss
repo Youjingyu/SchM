@@ -1,0 +1,20 @@
+.calendar{
+  & > div{
+    display: flex;
+  }
+  .cd-head{
+    height: .5rem;
+    line-height: .5rem;
+    text-align: center;
+    font-size: 14px;
+    div{
+      flex: 1;
+    }
+  }
+  .cd-content{
+    height: 1.5rem;
+    div{
+      flex: 1;
+    }
+  }
+}
