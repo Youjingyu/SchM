@@ -53,6 +53,7 @@
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "promise": "7.1.1",
+    "react-css-modules": "^4.0.5",
     "react-dev-utils": "^0.5.2",
     "sass-loader": "^6.0.3",
     "style-loader": "0.13.1",
