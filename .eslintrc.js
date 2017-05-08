@@ -38,6 +38,8 @@ module.exports = {
         // 不检查模板字符串格式
         'no-template-curly-in-string': [0],
         // 禁止使用var
-        'no-var': [2]
+        'no-var': [2],
+        // 允许在一个作用于内有多个变量申明
+        'one-var': [0]
     }
 }
