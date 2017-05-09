@@ -7,7 +7,7 @@
     "babel-plugin-import": "^1.1.1",
     "immutable": "^3.8.1",
     "lib-flexible": "^0.3.2",
-    "react": "^15.5.4",
+    "react": "^15.0",
     "react-dom": "^15.5.4",
     "react-hammerjs": "^0.5.0",
     "react-redux": "^5.0.4",
