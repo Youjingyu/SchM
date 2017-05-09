@@ -31,16 +31,23 @@ function computeDays () {
 class App extends Component {
   render() {
     const week = ['日', '一', '二', '三', '四', '五', '六'];
+    const days = computeDays();
     return (
     <div styleName="calendar">
       <div styleName='cd-head'>
-        {week.map((val) => {
-          return <div>周{val}</div>;
+        {week.map((val, index) => {
+          return <div key={index}>周{val}</div>;
         })}
       </div>
-      <div styleName="cd-content">
-        <div>{computeDays}</div>
-      </div>
+      {days.map((row, index) => {
+        return (
+          <div styleName="cd-content" key={index}>
+            {row.map((day, index) => {
+              return <div key={index}>{day}</div>;
+            })}
+          </div>
+        );
+      })}
     </div>
     );
   }

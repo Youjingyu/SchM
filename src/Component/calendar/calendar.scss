@@ -1,20 +1,24 @@
+@import '../../Style/variable';
 .calendar{
+  border-bottom: 1px solid $grey;
   & > div{
     display: flex;
+    border-top: 1px solid $grey;
+  }
+  & > div > div{
+    flex: 1;
+    border-left: 1px solid $grey;
+  }
+  & > div > div:first-child{
+    border-left: none;
   }
   .cd-head{
-    height: .5rem;
-    line-height: .5rem;
+    height: .88rem;
+    line-height: .88rem;
     text-align: center;
     font-size: 14px;
-    div{
-      flex: 1;
-    }
   }
   .cd-content{
-    height: 1.5rem;
-    div{
-      flex: 1;
-    }
+    height: 2.6rem;
   }
 }
