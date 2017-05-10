@@ -1,24 +1,27 @@
 @import '../../Style/variable';
 .calendar{
-  border-bottom: 1px solid $grey;
-  & > div{
-    display: flex;
-    border-top: 1px solid $grey;
-  }
-  & > div > div{
-    flex: 1;
-    border-left: 1px solid $grey;
-  }
-  & > div > div:first-child{
-    border-left: none;
-  }
   .cd-head{
     height: .88rem;
     line-height: .88rem;
     text-align: center;
     font-size: 14px;
+    border-bottom: 1px solid $grey;
   }
   .cd-content{
     height: 2.6rem;
+    border-bottom: 1px solid $grey;
+  }
+  .cd-head, .cd-content{
+    display: flex;
+    div{
+      flex: 1;
+      border-left: 1px solid $grey;
+    }
+    div:first-child{
+      border-left: none;
+    }
+  }
+  .cd-sch-detail{
+    border-bottom: 1px solid $grey;
   }
 }

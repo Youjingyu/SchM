@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
-import Style from './calendar.scss';
+import Style from '../calendar.scss';
 
 class DayBox extends Component {
   render() {
@@ -18,7 +18,7 @@ class DayBox extends Component {
     );
   }
   onTap= () => {
-    console.log(1);
+    this.props.onTap(this.props.day);
   }
 }
 

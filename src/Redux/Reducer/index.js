@@ -69,3 +69,13 @@ export const saleRecord = (state = Immutable.fromJS({}), action = {}) => {
       return state;
   }
 };
+
+export const getSchData = () => {
+  return {
+    2017: {
+      5: {
+        10: [{theme: 'oooo'}]
+      }
+    }
+  };
+};
