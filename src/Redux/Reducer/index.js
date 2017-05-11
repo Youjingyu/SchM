@@ -3,7 +3,8 @@ import {
     REQUEST_POSTS, RECEIVE_POSTS,
     RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA,
     DELETE_ITEM,
-    GET_DATA_START, GET_DATA_SUCCESS, TEST_DISPATCH
+    GET_DATA_START, GET_DATA_SUCCESS, TEST_DISPATCH,
+    UPDATE_SCH_DATA
 } from '../Action/index';
 
 // const initialState = Immutable.fromJS({}) //=Immutable.Map({})
@@ -70,12 +71,12 @@ export const saleRecord = (state = Immutable.fromJS({}), action = {}) => {
   }
 };
 
-export const getSchData = () => {
-  return {
-    2017: {
-      5: {
-        10: [{theme: 'oooo'}]
-      }
-    }
-  };
+export const updateSchData = (state = {}, action) => {
+  switch(action.type) {
+    case UPDATE_SCH_DATA:
+      const data = action.schData;
+      return {...data};
+    default:
+      return state;
+  }
 };

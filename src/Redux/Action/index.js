@@ -13,6 +13,7 @@ export const GET_DATA_START = 'GET_DATA_START';
 export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const TEST_DISPATCH = 'TEST_DISPATCH';
 
+export const UPDATE_SCH_DATA = 'UPDATE_SCH_DATA';
 // 开始获取数据
 // const requestPosts = path => {
 //   return {
@@ -127,5 +128,12 @@ export const testAction = (data) => {
   return{
     type: TEST_DISPATCH,
     data
+  };
+};
+
+export const updateSchData = (schData) => {
+  return{
+    type: UPDATE_SCH_DATA,
+    schData
   };
 };

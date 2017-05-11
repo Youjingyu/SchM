@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateSchData } from '@/Redux/Action';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
 import CalendarRow from './component/calendarRow';
@@ -15,6 +17,7 @@ class App extends Component {
   render() {
     const week = ['日', '一', '二', '三', '四', '五', '六'];
     const days = computeDays(this.state.date);
+    const schData = this.props.schData;
     return (
     <Hammer onSwipe={this.onSwipe}>
       <div styleName="calendar">
@@ -25,7 +28,7 @@ class App extends Component {
         </div>
         {days.map((row, index) => {
           return (
-            <CalendarRow data={row} key={index} />
+            <CalendarRow data={row} key={index} schData={schData} />
           );
         })}
       </div>
@@ -45,4 +48,14 @@ class App extends Component {
   }
 }
 
-export default CSSModules(App, Style);
+const mapStateToProps = (state, ownProps) => ({
+  schData: state.updateSchData
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  updateSchData: (schData) => {
+    dispatch(updateSchData(schData));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(App, Style));

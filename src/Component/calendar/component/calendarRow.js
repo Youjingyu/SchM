@@ -22,7 +22,7 @@ class CalendarRow extends Component {
             return <DayBox key={index} day={day} data={[{theme: 'kkk'}]} onTap={this.onBoxTap} />;
           })}
         </div>
-        <SchDetail isShow={this.state.showDetail} day={this.state.activeDay}></SchDetail>
+        <SchDetail isShow={this.state.showDetail} day={this.state.activeDay} schData={this.props.schData}></SchDetail>
       </div>
     );
   }

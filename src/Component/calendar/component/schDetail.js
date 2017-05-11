@@ -5,10 +5,11 @@ import Style from '../calendar.scss';
 
 class SchDetail extends Component {
   render() {
-    const data = this.props.day || 'hh';
+    // const data = this.props.day || 'hh';
+    console.log(this.props.schData);
     return (
       <div style={{display: this.props.isShow ? 'block' : 'none'}} styleName="cd-sch-detail">
-        {data}
+        {this.props.schData['2017']['5']['10'][0]['theme']}
       </div>
     );
   }
