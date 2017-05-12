@@ -14,11 +14,11 @@ class CalendarRow extends Component {
     };
   }
   render() {
-    const data = this.props.data || [];
+    const rowDays = this.props.rowDays || [];
     return (
       <div>
         <div styleName="cd-content">
-          {data.map((day, index) => {
+          {rowDays.map((day, index) => {
             return <DayBox key={index} day={day} data={[{theme: 'kkk'}]} onTap={this.onBoxTap} />;
           })}
         </div>
