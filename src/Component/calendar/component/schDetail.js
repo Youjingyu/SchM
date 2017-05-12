@@ -5,11 +5,18 @@ import Style from '../calendar.scss';
 
 class SchDetail extends Component {
   render() {
-    // const data = this.props.day || 'hh';
-    console.log(this.props.schData);
+    const date = this.props.date || {}, schData = this.props.schData;
+    const year = date.getFullYear(), month = date.getMonth() + 1;
+    const curDaySchData = schData && schData[year] && schData[year][month] && schData[year][month][this.props.day];
+    let result = '添加日程';
+    if(curDaySchData) {
+      result = curDaySchData.map((val, index) => {
+        return (<span key={index}>{val.theme}</span>);
+      });
+    }
     return (
       <div style={{display: this.props.isShow ? 'block' : 'none'}} styleName="cd-sch-detail">
-        {this.props.schData['2017']['5']['10'][0]['theme']}
+        {result}
       </div>
     );
   }

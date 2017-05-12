@@ -5,12 +5,14 @@ import Style from '../calendar.scss';
 
 class DayBox extends Component {
   render() {
-    const data = this.props.data || [];
+    const date = this.props.date || {}, schData = this.props.schData;
+    const year = date.getFullYear(), month = date.getMonth() + 1;
+    const curDaySchData = (schData && schData[year] && schData[year][month] && schData[year][month][this.props.day]) || [];
     return (
     <Hammer onTap={this.onTap}>
       <div>
         <span>{this.props.day}</span>
-        {data.map((val, index) => {
+        {curDaySchData.map((val, index) => {
           return <span key={index}>{val.theme}</span>;
         })}
       </div>

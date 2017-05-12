@@ -15,14 +15,15 @@ class CalendarRow extends Component {
   }
   render() {
     const rowDays = this.props.rowDays || [];
+    const date = this.props.date, schData = this.props.schData;
     return (
       <div>
         <div styleName="cd-content">
           {rowDays.map((day, index) => {
-            return <DayBox key={index} day={day} data={[{theme: 'kkk'}]} onTap={this.onBoxTap} />;
+            return <DayBox key={index} day={day} date={date} schData={schData} onTap={this.onBoxTap} />;
           })}
         </div>
-        <SchDetail isShow={this.state.showDetail} day={this.state.activeDay} schData={this.props.schData}></SchDetail>
+        <SchDetail isShow={this.state.showDetail} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
       </div>
     );
   }
