@@ -28,19 +28,28 @@ class CalendarRow extends Component {
     );
   }
   onBoxTap= (day) => {
-    const showDetail = !this.state.showDetail;
+    const showDetail = this.state.showDetail;
     if(day !== '') {
-      this.setState({
-        showDetail: showDetail,
-        activeDay: day
-      });
-    } else {
-      if(showDetail === false) {
+      if(showDetail === true) {
+        if(day === this.state.activeDay) {
+          this.setState({
+            showDetail: false
+          });
+        } else {
+          this.setState({
+            activeDay: day
+          });
+        }
+      } else {
         this.setState({
-          showDetail: showDetail,
+          showDetail: true,
           activeDay: day
         });
       }
+    } else {
+      this.setState({
+        showDetail: false
+      });
     }
   }
 }
