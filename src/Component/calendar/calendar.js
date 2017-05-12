@@ -4,7 +4,7 @@ import { updateSchData } from '@/Redux/Action';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
 import CalendarRow from './component/calendarRow';
-import computeDays from '../../Js/computeDays';
+import computeDays from '@/Js/computeDays';
 import Style from './calendar.scss';
 
 class App extends Component {
