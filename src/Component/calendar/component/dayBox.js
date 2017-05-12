@@ -24,7 +24,10 @@ class DayBox extends Component {
     );
   }
   onTap= () => {
-    this.props.onTap(this.props.day);
+    const day = this.props.day;
+    if(day !== '') {
+      this.props.onTap(day);
+    }
   }
 }
 

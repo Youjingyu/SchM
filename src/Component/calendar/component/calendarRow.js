@@ -29,26 +29,20 @@ class CalendarRow extends Component {
   }
   onBoxTap= (day) => {
     const showDetail = this.state.showDetail;
-    if(day !== '') {
-      if(showDetail === true) {
-        if(day === this.state.activeDay) {
-          this.setState({
-            showDetail: false
-          });
-        } else {
-          this.setState({
-            activeDay: day
-          });
-        }
+    if(showDetail === true) {
+      if(day === this.state.activeDay) {
+        this.setState({
+          showDetail: false
+        });
       } else {
         this.setState({
-          showDetail: true,
           activeDay: day
         });
       }
     } else {
       this.setState({
-        showDetail: false
+        showDetail: true,
+        activeDay: day
       });
     }
   }
