@@ -21,7 +21,11 @@
       border-left: none;
     }
   }
+  .cd-day-box-active{
+    background-color: $lightBlue;
+  }
   .cd-sch-detail{
     border-bottom: 1px solid $grey;
+    background-color: $lightBlue;
   }
 }

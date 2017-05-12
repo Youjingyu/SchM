@@ -8,14 +8,18 @@ class DayBox extends Component {
     const date = this.props.date || {}, schData = this.props.schData;
     const year = date.getFullYear(), month = date.getMonth() + 1;
     const curDaySchData = (schData && schData[year] && schData[year][month] && schData[year][month][this.props.day]) || [];
-    return (
-    <Hammer onTap={this.onTap}>
-      <div>
+    let box = <div><span>{this.props.day}</span></div>;
+    if(curDaySchData.length > 0) {
+      box = (<div styleName="cd-day-box-active">
         <span>{this.props.day}</span>
         {curDaySchData.map((val, index) => {
           return <span key={index}>{val.theme}</span>;
         })}
-      </div>
+      </div>);
+    }
+    return (
+    <Hammer onTap={this.onTap}>
+      {box}
     </Hammer>
     );
   }
