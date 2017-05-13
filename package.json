@@ -2,6 +2,7 @@
   "name": "sch-m",
   "version": "0.1.0",
   "private": true,
+  "homepage":"./",
   "dependencies": {
     "antd-mobile": "^1.1.1",
     "babel-plugin-import": "^1.1.1",
