@@ -13,11 +13,11 @@ export default function computeDays (date) {
   daysArr = emptyDaysArr.concat(daysArr);
   let resultArr = [], rowArr = [];
   for(let i = 0, len = daysArr.length; i < len; i++) {
+    rowArr.push(daysArr[i]);
     if(rowArr.length === 7) {
       resultArr.push(rowArr);
       rowArr = [];
     }
-    rowArr.push(daysArr[i]);
     if(i === len - 1 && rowArr.length < 7 && rowArr.length !== 0) {
       resultArr.push(rowArr.concat(new Array(7 - rowArr.length).fill('')));
     }
