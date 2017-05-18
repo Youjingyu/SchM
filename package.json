@@ -2,7 +2,7 @@
   "name": "sch-m",
   "version": "0.1.0",
   "private": true,
-  "homepage":"./",
+  "homepage": "./",
   "dependencies": {
     "antd-mobile": "^1.1.1",
     "babel-plugin-import": "^1.1.1",
@@ -57,6 +57,7 @@
     "promise": "7.1.1",
     "react-css-modules": "^4.0.5",
     "react-dev-utils": "^0.5.2",
+    "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
