@@ -57,7 +57,7 @@
     "promise": "7.1.1",
     "react-css-modules": "^4.0.5",
     "react-dev-utils": "^0.5.2",
-    "react-test-renderer": "^15.5.4",
+    "react-test-renderer": "^15.3.0",
     "sass-loader": "^6.0.3",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
@@ -94,7 +94,7 @@
     ],
     "moduleNameMapper": {
       "^react-native$": "react-native-web",
-      "^@(.*)$":"<rootDir>/src$1"
+      "^@(.*)$": "<rootDir>/src$1"
     }
   },
   "babel": {
