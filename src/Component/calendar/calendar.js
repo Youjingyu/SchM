@@ -11,7 +11,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date()
+      date: new Date(),
+      activeRowIndex: undefined,
+      activeBoxIndex: undefined
     };
   }
   render() {
@@ -28,7 +30,11 @@ class App extends Component {
         </div>
         {days.map((row, index) => {
           return (
-            <CalendarRow key={index} rowDays={row} date={this.state.date} schData={schData} rowHeight={13 / days.length}/>
+            <CalendarRow key={index} myKey={index} rowDays={row} date={this.state.date} schData={schData}
+                         activeRowIndex={this.state.activeRowIndex}
+                         activeBoxIndex={this.state.activeBoxIndex}
+                         updateActiveIndex={this.updateActiveIndex}
+                         rowHeight={13 / days.length}/>
           );
         })}
       </div>
@@ -44,6 +50,12 @@ class App extends Component {
     }
     this.setState({
       date: date
+    });
+  }
+  updateActiveIndex (activeRowIndex, activeBoxIndex) {
+    this.setState({
+      activeRowIndex: activeRowIndex,
+      activeBoxIndex: activeBoxIndex
     });
   }
 }

@@ -9,43 +9,33 @@ class CalendarRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetail: false,
       activeDay: undefined
     };
   }
   render() {
-    const rowDays = this.props.rowDays || [];
+    const rowDays = this.props.rowDays;
     const rowHeight = this.props.rowHeight;
     const date = this.props.date, schData = this.props.schData;
+    const showDetail = this.props.myKey === this.props.activeRowIndex;
     return (
       <div>
         <div styleName="cd-content" style={{height: rowHeight + 'rem'}}>
           {rowDays.map((day, index) => {
-            return <DayBox key={index} day={day} date={date} schData={schData} onTap={this.onBoxTap} />;
+            return <DayBox key={index} day={day} date={date} schData={schData} onTap={this.onBoxTap}
+                           showDetail={showDetail}
+                           curRowIndex={this.props.myKey}
+                           activeRowIndex={this.props.activeRowIndex} />;
           })}
         </div>
-        <SchDetail isShow={this.state.showDetail} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
+        <SchDetail isShow={showDetail} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
       </div>
     );
   }
-  onBoxTap= (day) => {
-    const showDetail = this.state.showDetail;
-    if(showDetail === true) {
-      if(day === this.state.activeDay) {
-        this.setState({
-          showDetail: false
-        });
-      } else {
-        this.setState({
-          activeDay: day
-        });
-      }
-    } else {
-      this.setState({
-        showDetail: true,
-        activeDay: day
-      });
-    }
+  onBoxTap= (day, boxKey) => {
+    this.setState({
+      activeDay: day
+    });
+    this.props.updateActiveIndex(this.props.myKey, boxKey);
   }
 }
 
