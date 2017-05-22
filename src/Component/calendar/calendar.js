@@ -28,7 +28,7 @@ class App extends Component {
         </div>
         {days.map((row, index) => {
           return (
-            <CalendarRow key={index} rowDays={row} date={this.state.date} schData={schData} />
+            <CalendarRow key={index} rowDays={row} date={this.state.date} schData={schData} rowHeight={13 / days.length}/>
           );
         })}
       </div>
