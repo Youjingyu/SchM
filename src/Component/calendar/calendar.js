@@ -52,7 +52,7 @@ class App extends Component {
       date: date
     });
   }
-  updateActiveIndex (activeRowIndex, activeBoxIndex) {
+  updateActiveIndex = (activeRowIndex, activeBoxIndex) => {
     this.setState({
       activeRowIndex: activeRowIndex,
       activeBoxIndex: activeBoxIndex

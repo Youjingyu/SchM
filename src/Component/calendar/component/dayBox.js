@@ -4,22 +4,21 @@ import Hammer from 'react-hammerjs';
 import Style from '../calendar.scss';
 
 class DayBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clickClassName: ''
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     clickClassName: ''
+  //   };
+  // }
   render() {
-    const date = this.props.date || {}, schData = this.props.schData;
+    const date = this.props.date, schData = this.props.schData;
     const year = date.getFullYear(), month = date.getMonth() + 1;
     const curDaySchData = (schData && schData[year] && schData[year][month] && schData[year][month][this.props.day]) || [];
+    let clickActive = '';
     if(this.props.activeRowIndex === this.props.curRowIndex) {
-      this.setState({
-        clickClassName: Style['cd-day-box-click-active']
-      });
+      clickActive = Style['cd-day-box-click-active'];
     }
-    const className = (curDaySchData.length > 0 ? (Style['cd-day-box-active'] + ' ') : '') + this.state.clickClassName;
+    const className = (curDaySchData.length > 0 ? (Style['cd-day-box-active'] + ' ') : '') + clickActive;
     return (
     <Hammer onTap={this.onTap}>
       <div className={className}>
@@ -34,9 +33,9 @@ class DayBox extends Component {
   onTap= () => {
     const day = this.props.day;
     if(day !== '') {
-      this.setState({
-        clickClassName: Style['cd-day-box-click-active']
-      });
+      // this.setState({
+      //   clickClassName: Style['cd-day-box-click-active']
+      // });
       this.props.onTap(day, this.props.key);
     }
   }
