@@ -36,7 +36,8 @@ class DayBox extends Component {
       // this.setState({
       //   clickClassName: Style['cd-day-box-click-active']
       // });
-      this.props.onTap(day, this.props.boxKey);
+      const boxKey = this.props.activeBoxIndex === this.props.boxKey ? undefined : this.props.boxKey;
+      this.props.onTap(day, boxKey);
     }
   }
 }

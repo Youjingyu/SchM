@@ -35,7 +35,8 @@ class CalendarRow extends Component {
     this.setState({
       activeDay: day
     });
-    this.props.updateActiveIndex(this.props.rowKey, boxKey);
+    const rowKey = boxKey === undefined ? undefined : this.props.rowKey;
+    this.props.updateActiveIndex(rowKey, boxKey);
   }
 }
 
