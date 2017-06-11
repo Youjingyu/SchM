@@ -14,7 +14,8 @@ class CalendarRow extends Component {
   }
   render() {
     const rowDays = this.props.rowDays;
-    const rowHeight = this.props.rowHeight;
+    const rowLength = this.props.rowLength;
+    const rowHeight = 13 / rowLength;
     const date = this.props.date, schData = this.props.schData;
     const isActiveRow = this.props.rowKey === this.props.activeRowIndex;
     return (
@@ -27,7 +28,9 @@ class CalendarRow extends Component {
                            activeBoxIndex={this.props.activeBoxIndex} />;
           })}
         </div>
-        <SchDetail isShow={isActiveRow} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
+        <SchDetail isShow={isActiveRow} day={this.state.activeDay}
+                   date={date} schData={schData}
+                   height={rowHeight * (rowLength - 2) + 'rem'}/>
       </div>
     );
   }

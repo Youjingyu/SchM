@@ -1,5 +1,7 @@
 @import 'variable';
 .calendar{
+  //height: 13.88rem;
+  //overflow: hidden;
   .cd-head{
     height: .88rem;
     line-height: .88rem;
@@ -31,5 +33,16 @@
   .cd-sch-detail{
     border-bottom: 1px solid $grey;
     background-color: $lightGrey;
+    position: relative;
+    .cd-sch-detail-add{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      text-align: center;
+      height: 20%;
+    }
   }
 }

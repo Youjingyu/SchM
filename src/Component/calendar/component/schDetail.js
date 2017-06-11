@@ -8,14 +8,14 @@ class SchDetail extends Component {
     const date = this.props.date || {}, schData = this.props.schData;
     const year = date.getFullYear(), month = date.getMonth() + 1;
     const curDaySchData = schData && schData[year] && schData[year][month] && schData[year][month][this.props.day];
-    let result = '添加日程';
+    let result = <div styleName="cd-sch-detail-add">添加日程</div>;
     if(curDaySchData) {
       result = curDaySchData.map((val, index) => {
         return (<span key={index}>{val.theme}</span>);
       });
     }
     return (
-      <div style={{display: this.props.isShow ? 'block' : 'none'}} styleName="cd-sch-detail">
+      <div style={{display: this.props.isShow ? 'block' : 'none', height: this.props.height}} styleName="cd-sch-detail">
         {result}
       </div>
     );

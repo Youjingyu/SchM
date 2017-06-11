@@ -35,7 +35,7 @@ class App extends Component {
                          activeRowIndex={this.state.activeRowIndex}
                          activeBoxIndex={this.state.activeBoxIndex}
                          updateActiveIndex={this.updateActiveIndex}
-                         rowHeight={13 / days.length}/>
+                         rowLength={days.length}/>
           );
         })}
       </div>
