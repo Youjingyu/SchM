@@ -30,7 +30,8 @@ class App extends Component {
         </div>
         {days.map((row, index) => {
           return (
-            <CalendarRow key={index} myKey={index} rowDays={row} date={this.state.date} schData={schData}
+            <CalendarRow key={index} rowDays={row} date={this.state.date} schData={schData}
+                         rowKey={index}
                          activeRowIndex={this.state.activeRowIndex}
                          activeBoxIndex={this.state.activeBoxIndex}
                          updateActiveIndex={this.updateActiveIndex}
@@ -49,7 +50,9 @@ class App extends Component {
       date.setMonth(date.getMonth() - 1);
     }
     this.setState({
-      date: date
+      date: date,
+      activeRowIndex: undefined,
+      activeBoxIndex: undefined
     });
   }
   updateActiveIndex = (activeRowIndex, activeBoxIndex) => {

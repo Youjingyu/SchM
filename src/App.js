@@ -1,4 +1,4 @@
-import '../debug/debuggap';
+// import '../debug/debuggap';
 import 'lib-flexible';
 import React from 'react';
 import ReactDOM from 'react-dom';

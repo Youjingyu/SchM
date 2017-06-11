@@ -15,7 +15,7 @@ class DayBox extends Component {
     const year = date.getFullYear(), month = date.getMonth() + 1;
     const curDaySchData = (schData && schData[year] && schData[year][month] && schData[year][month][this.props.day]) || [];
     let clickActive = '';
-    if(this.props.activeRowIndex === this.props.curRowIndex) {
+    if(this.props.isActiveRow === true && this.props.activeBoxIndex === this.props.boxKey) {
       clickActive = Style['cd-day-box-click-active'];
     }
     const className = (curDaySchData.length > 0 ? (Style['cd-day-box-active'] + ' ') : '') + clickActive;
@@ -36,7 +36,7 @@ class DayBox extends Component {
       // this.setState({
       //   clickClassName: Style['cd-day-box-click-active']
       // });
-      this.props.onTap(day, this.props.key);
+      this.props.onTap(day, this.props.boxKey);
     }
   }
 }

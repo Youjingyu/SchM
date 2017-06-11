@@ -16,18 +16,18 @@ class CalendarRow extends Component {
     const rowDays = this.props.rowDays;
     const rowHeight = this.props.rowHeight;
     const date = this.props.date, schData = this.props.schData;
-    const showDetail = this.props.myKey === this.props.activeRowIndex;
+    const isActiveRow = this.props.rowKey === this.props.activeRowIndex;
     return (
       <div>
         <div styleName="cd-content" style={{height: rowHeight + 'rem'}}>
           {rowDays.map((day, index) => {
             return <DayBox key={index} day={day} date={date} schData={schData} onTap={this.onBoxTap}
-                           showDetail={showDetail}
-                           curRowIndex={this.props.myKey}
-                           activeRowIndex={this.props.activeRowIndex} />;
+                           isActiveRow={isActiveRow}
+                           boxKey={index}
+                           activeBoxIndex={this.props.activeBoxIndex} />;
           })}
         </div>
-        <SchDetail isShow={showDetail} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
+        <SchDetail isShow={isActiveRow} day={this.state.activeDay} date={date} schData={schData}></SchDetail>
       </div>
     );
   }
@@ -35,7 +35,7 @@ class CalendarRow extends Component {
     this.setState({
       activeDay: day
     });
-    this.props.updateActiveIndex(this.props.myKey, boxKey);
+    this.props.updateActiveIndex(this.props.rowKey, boxKey);
   }
 }
 
