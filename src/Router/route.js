@@ -1,16 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 // import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
 import { HashRouter, BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import index from '../Pages/index';
-
-class Roots extends Component {
-  render() {
-    return (
-            <div>{this.props.children}</div>
-    );
-  }
-}
+import newSchedule from '../Pages/newSchedule';
 
 const Router = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRouter;
 
@@ -22,11 +15,12 @@ const Router = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRoute
 
 const RouteConfig = (
     <Router>
-      <Roots>
-        <Route path="/" component={index} />
+      <div>
+        <Route exact path="/" component={index} />
+        <Route path="/newSchedule" component={newSchedule} />
         {/* <Route path="saleRecord" getComponent={saleRecord} />//销售记录 */}
         <Redirect from='*' to='/' />
-      </Roots>
+      </div>
     </Router>
 );
 
