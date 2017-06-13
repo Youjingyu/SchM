@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from '../Component/calendar/calendar';
-import TopMenu from '../Component/topMenu/topMenu';
+import TopMenu from '../Component/topMenu/topMenuIndex';
 import BottomMenu from '../Component/bottomMenu/bottomMenu';
 
 class App extends Component {

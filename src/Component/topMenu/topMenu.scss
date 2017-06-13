@@ -33,4 +33,28 @@
       background-image: url("@/Img/serch.png");
     }
   }
+  .top-menu-close{
+    height: .48rem;
+    div{
+      width: .48rem;
+      height: 100%;
+      background-image: url("@/Img/close.png");
+    }
+  }
+  .top-menu-confirm{
+    height: .48rem;
+    text-align: right;
+    div{
+      display: inline-block;
+      width: .6rem;
+      height: 100%;
+      background-image: url("@/Img/confirm.png");
+    }
+  }
+  .top-menu-time{
+    font-size: .48rem;
+  }
+}
+.top-menu-new-sch{
+  background-color: #fff;
 }
