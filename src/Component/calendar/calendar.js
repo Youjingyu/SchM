@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateSchData } from '@/Redux/Action';
+import { updateSchData, updateDate } from '@/Redux/Action';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
 import CalendarRow from './component/calendarRow';
@@ -11,14 +11,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
       activeRowIndex: undefined,
       activeBoxIndex: undefined
     };
   }
   render() {
     const week = ['日', '一', '二', '三', '四', '五', '六'];
-    const days = computeDays(this.state.date);
+    const days = computeDays(this.props.date);
     const schData = this.props.schData;
     return (
     <Hammer onSwipe={this.onSwipe}>
@@ -30,7 +29,7 @@ class App extends Component {
         </div>
         {days.map((row, index) => {
           return (
-            <CalendarRow key={index} rowDays={row} date={this.state.date} schData={schData}
+            <CalendarRow key={index} rowDays={row} date={this.props.date} schData={schData}
                          rowKey={index}
                          activeRowIndex={this.state.activeRowIndex}
                          activeBoxIndex={this.state.activeBoxIndex}
@@ -43,14 +42,14 @@ class App extends Component {
     );
   }
   onSwipe = (event) => {
-    let date = this.state.date;
+    let date = this.props.date;
     if(event.direction === 2) {
       date.setMonth(date.getMonth() + 1);
     } else {
       date.setMonth(date.getMonth() - 1);
     }
+    this.props.updateDate(new Date(date.getFullYear(), date.getMonth(), date.getDate()));
     this.setState({
-      date: date,
       activeRowIndex: undefined,
       activeBoxIndex: undefined
     });
@@ -64,12 +63,16 @@ class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  schData: state.updateSchData
+  schData: state.schData,
+  date: state.dateData
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   updateSchData: (schData) => {
     dispatch(updateSchData(schData));
+  },
+  updateDate: (date) => {
+    dispatch(updateDate(date));
   }
 });
 

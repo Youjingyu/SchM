@@ -4,7 +4,7 @@ import {
     RECORD_STATE, SAVE_PRODUCT_LIST, NEW_PRODUCT_DATA,
     DELETE_ITEM,
     GET_DATA_START, GET_DATA_SUCCESS, TEST_DISPATCH,
-    UPDATE_SCH_DATA
+    UPDATE_SCH_DATA, UPDATE_DATE
 } from '../Action/index';
 
 // const initialState = Immutable.fromJS({}) //=Immutable.Map({})
@@ -71,11 +71,20 @@ export const saleRecord = (state = Immutable.fromJS({}), action = {}) => {
   }
 };
 
-export const updateSchData = (state = {}, action) => {
+export const schData = (state = {}, action) => {
   switch(action.type) {
     case UPDATE_SCH_DATA:
       const data = action.schData;
       return {...data};
+    default:
+      return state;
+  }
+};
+
+export const dateData = (state = {}, action) => {
+  switch(action.type) {
+    case UPDATE_DATE:
+      return action.date;
     default:
       return state;
   }

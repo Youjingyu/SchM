@@ -14,6 +14,8 @@ export const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS';
 export const TEST_DISPATCH = 'TEST_DISPATCH';
 
 export const UPDATE_SCH_DATA = 'UPDATE_SCH_DATA';
+export const UPDATE_DATE = 'UPDATE_DATE';
+
 // 开始获取数据
 // const requestPosts = path => {
 //   return {
@@ -135,5 +137,12 @@ export const updateSchData = (schData) => {
   return{
     type: UPDATE_SCH_DATA,
     schData
+  };
+};
+
+export const updateDate = (date) => {
+  return{
+    type: UPDATE_DATE,
+    date
   };
 };
