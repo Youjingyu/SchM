@@ -1,24 +1,35 @@
 .top-menu{
   display: flex;
-  align-content: center;
+  align-items: center;
+  padding: 0 .5rem;
   height: 2.35rem;
   background-color: rgb(243,244,246);
-  div{
+  & > div{
     flex: 1;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    div{
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
   }
   .top-menu-setting{
-    width: 0.65rem;
-    height: 0.65rem;
-    background-image: url("@/Img/setting.png");
+    height: .65rem;
+    div{
+      width: .65rem;
+      height: 100%;
+      background-image: url("@/Img/setting.png");
+    }
   }
   .top-menu-date{
     text-align: center;
   }
   .top-menu-serch{
-    width: 0.56rem;
-    height: 0.56rem;
-    background-image: url("@/Img/serch.png");
+    height: .56rem;
+    text-align: right;
+    div{
+      display: inline-block;
+      width: .56rem;
+      height: 100%;
+      background-image: url("@/Img/serch.png");
+    }
   }
 }
