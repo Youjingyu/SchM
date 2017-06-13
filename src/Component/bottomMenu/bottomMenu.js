@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 // import Hammer from 'react-hammerjs';
 import Style from './bottomMenu.scss';
@@ -12,7 +13,7 @@ class BottomMenu extends Component {
           <span>日程</span>
         </div>
         <div>
-          <div styleName="bottom-menu-add"></div>
+          <Link to="/newSchedule"><div styleName="bottom-menu-add"></div></Link>
         </div>
         <div styleName="bottom-menu-icon">
           <div styleName="bottom-menu-info"></div>
