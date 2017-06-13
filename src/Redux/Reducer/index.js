@@ -84,7 +84,8 @@ export const schData = (state = {}, action) => {
 export const dateData = (state = {}, action) => {
   switch(action.type) {
     case UPDATE_DATE:
-      return action.date;
+      const date = action.date;
+      return new Date(date.getFullYear(), date.getMonth(), date.getDate());
     default:
       return state;
   }

@@ -48,7 +48,7 @@ class App extends Component {
     } else {
       date.setMonth(date.getMonth() - 1);
     }
-    this.props.updateDate(new Date(date.getFullYear(), date.getMonth(), date.getDate()));
+    this.props.updateDate(date);
     this.setState({
       activeRowIndex: undefined,
       activeBoxIndex: undefined
