@@ -1,8 +1,23 @@
-.new-sch-example{
+.new-sch-input{
   height: 1.71rem;
-  line-height: 1.71rem;
+  width: 100%;
   padding-left: .47rem;
+  box-sizing: border-box;
   background-color: #2088FB;
   font-size: .47rem;
   color: #71D7FF;
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: #71D7FF;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #71D7FF;
+    opacity: 1;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #71D7FF;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #71D7FF;
+  }
 }

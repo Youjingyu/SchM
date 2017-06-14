@@ -8,9 +8,7 @@ class NewSchedule extends Component {
     return (
       <div>
         <TopMenu />
-        <div styleName="new-sch-example">
-          例如：明天上午九点开会
-        </div>
+        <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" />
       </div>
     );
   }
