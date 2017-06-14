@@ -1,5 +1,10 @@
 @import 'reset';
 @import 'variable';
+@import 'app';
+body{
+  background-color: #fff;
+  font-size: 14px;
+}
 div{
   box-sizing: border-box;
 }
