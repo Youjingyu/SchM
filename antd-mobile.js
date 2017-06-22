@@ -12501,7 +12501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	
-	getDefaultDate=getDefaultDate;var _moment=__webpack_require__(111);var _moment2=_interopRequireDefault(_moment);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function getFormatter(type){var formatter=void 0;if(type==='time'){formatter='HH:mm';}else if(type==='datetime'){formatter='YYYY-MM-DD HH:mm';}else{formatter='YYYY-MM-DD';}return formatter;}function formatFn(instance,value){var format=instance.props.format;var type=typeof format==='undefined'?'undefined':(0,_typeof3.default)(format);if(type==='string'){return value.format(type);}if(type==='function'){return format(value);}return value.format(getFormatter(instance.props.mode));}function getProps(){return{mode:'datetime',extra:'请选择',onChange:function onChange(){},title:''};}function getDefaultDate(props){var
+	getDefaultDate=getDefaultDate;var _moment=__webpack_require__(111);var _moment2=_interopRequireDefault(_moment);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function getFormatter(type){var formatter=void 0;if(type==='time'){formatter='HH:mm';}else if(type==='datetime' || type==='datetime1'){formatter='YYYY-MM-DD HH:mm';}else{formatter='YYYY-MM-DD';}return formatter;}function formatFn(instance,value){var format=instance.props.format;var type=typeof format==='undefined'?'undefined':(0,_typeof3.default)(format);if(type==='string'){return value.format(type);}if(type==='function'){return format(value);}return value.format(getFormatter(instance.props.mode));}function getProps(){return{mode:'datetime',extra:'请选择',onChange:function onChange(){},title:''};}function getDefaultDate(props){var
 	defaultDate=props.defaultDate,minDate=props.minDate,maxDate=props.maxDate;
 	if(defaultDate){
 	return defaultDate;
@@ -36367,7 +36367,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    fontSize: 20
 	};
 	var DATETIME = 'datetime';
-	var DATE = 'date';
+  var DATETIME1 = 'datetime1';
+  var DATE = 'date';
 	var TIME = 'time';
 	var MONTH = 'month';
 	var YEAR = 'year';
@@ -36401,7 +36402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var mode = props.mode;
 	
 	        var newValue = this.getDate().clone();
-	        if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH) {
+	        if (mode === DATETIME || mode === DATE || mode === YEAR || mode === MONTH || mode === DATETIME1) {
 	            switch (index) {
 	                case 0:
 	                    newValue.year(value);
@@ -36576,7 +36577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var minDateHour = this.getMinHour();
 	        var maxDateHour = this.getMaxHour();
 	        var hour = date.hour();
-	        if (mode === DATETIME) {
+	        if (mode === DATETIME || mode === DATETIME1) {
 	            var year = date.year();
 	            var month = date.month();
 	            var day = date.date();
@@ -36632,7 +36633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        var minDate = this.getMinDate();
 	        var maxDate = this.getMaxDate();
-	        if (mode === DATETIME) {
+	        if (mode === DATETIME || mode === DATETIME1) {
 	            if (date.isBefore(minDate)) {
 	                return minDate.clone();
 	            }
@@ -36688,6 +36689,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            cols = cols.concat(this.getTimeData());
 	            value = value.concat([date.hour() + '', date.minute() + '']);
 	        }
+	        if(mode === DATETIME1){
+            var weekText = ['日', '一', '二', '三', '四', '五', '六'];
+            cols = [this.getDateData()[2]].concat(this.getTimeData());
+            value = [date.month() + '月' + date.date() + '日' + ' ' + '周' + weekText[date.day()], date.hour() + '', date.minute() + ''];
+          }
 
 	        return {
 	            value: value,
@@ -36706,7 +36712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            rootNativeProps = _props3.rootNativeProps,
 	            className = _props3.className;
 	
-	        return _react2["default"].createElement(_MultiPicker2["default"], { rootNativeProps: rootNativeProps, className: className, prefixCls: prefixCls, pickerPrefixCls: pickerPrefixCls, pickerItemStyle: typeof window === 'undefined' && mode === 'datetime' ? smallPickerItem : undefined, selectedValue: value, onValueChange: this.onValueChange }, cols);
+	        return _react2["default"].createElement(_MultiPicker2["default"], { rootNativeProps: rootNativeProps, className: className, prefixCls: prefixCls, pickerPrefixCls: pickerPrefixCls, pickerItemStyle: typeof window === 'undefined' && (mode === 'datetime' || mode === 'datetime1') ? smallPickerItem : undefined, selectedValue: value, onValueChange: this.onValueChange }, cols);
 	    }
 	});
 	exports["default"] = DatePicker;
