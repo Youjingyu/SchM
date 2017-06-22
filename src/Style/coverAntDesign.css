@@ -4,3 +4,6 @@
 .am-picker-col-item{
  font-size: 20px;
 }
+.am-picker-item:first-child{
+    flex: 2;
+}
