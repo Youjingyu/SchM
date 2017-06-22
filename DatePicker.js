@@ -237,16 +237,16 @@ var DatePicker = _react2["default"].createClass({
         var weekText = ['日', '一', '二', '三', '四', '五', '六'];
         for (var _i2 = minDay; _i2 <= maxDay; _i2++) {
            var _label = formatDay ? formatDay(_i2, date) : _i2 + locale.day + '';
-           console.log(_i2 , locale.day, locale);
-          // if(mode === DATETIME1){
-          //   _label = date.month() + '月' + _label + ' ' + '周' + weekText[date.day()];
-          // }
+
+          if(mode === DATETIME1){
+            _label = date.month() + '月' + _label + ' ' + '周' + weekText[date.day()];
+          }
             days.push({
                 value: _i2 + '',
                 label: _label
             });
         }
-        console.log(days);
+
         return [yearCol, monthCol, { key: 'day', props: { children: days } }];
     },
     getTimeData: function getTimeData() {
