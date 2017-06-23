@@ -48,6 +48,9 @@
     font-size: .38rem;
     color: #218AF3;
     background-color: #D2E6FF;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
   }
   .new-sch-hr{
     height: .79rem;

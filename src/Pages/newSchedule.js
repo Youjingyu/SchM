@@ -29,6 +29,7 @@ class NewSchedule extends Component {
     }
     const endTime = nowTime.clone();
     this.state = {
+      theme: '',
       startTime: nowTime,
       endTime: endTime.hours(endTime.hours() + 1)
     };
@@ -40,7 +41,7 @@ class NewSchedule extends Component {
     return (
       <div styleName="new-sch">
         <TopMenu />
-        <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" />
+        <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" value={this.state.theme} onChange={this.inputOnChange}/>
         <div styleName="new-sch-content">
           <div styleName="new-sch-head">
             <div>
@@ -58,7 +59,7 @@ class NewSchedule extends Component {
               }
             </div>
           </div>
-          <div styleName="new-sch-title">哈哈哈哈</div>
+          <div styleName="new-sch-title">{this.state.theme}</div>
           <div styleName="new-sch-hr"></div>
           <DatePicker
             mode="datetime1"
@@ -79,6 +80,11 @@ class NewSchedule extends Component {
         </div>
       </div>
     );
+  }
+  inputOnChange = (event) => {
+    this.setState({
+      theme: event.target.value
+    });
   }
   onStartChange = (date) => {
     this.setState({
