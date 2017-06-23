@@ -36,12 +36,28 @@ class NewSchedule extends Component {
   render() {
     const startTime = this.state.startTime;
     const endTime = this.state.endTime;
+    const weekText = ['日', '一', '二', '三', '四', '五', '六'];
     return (
       <div styleName="new-sch">
         <TopMenu />
         <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" />
         <div styleName="new-sch-content">
-          <div styleName="new-sch-head">周末了，哈哈哈哈</div>
+          <div styleName="new-sch-head">
+            <div>
+              {
+                zerofill(startTime.month() + 1) + '月' +
+                zerofill(startTime.date()) + '日' +
+                ' 周' + weekText[startTime.day()]
+              }
+              </div>
+            <div>
+              {
+                zerofill(endTime.month() + 1) + '月' +
+                zerofill(endTime.date()) + '日' +
+                ' 周' + weekText[endTime.day()]
+              }
+            </div>
+          </div>
           <div styleName="new-sch-title">哈哈哈哈</div>
           <div styleName="new-sch-hr"></div>
           <DatePicker

@@ -30,9 +30,16 @@
     background-color: #EDF6FD;
   }
   .new-sch-head{
+    display: flex;
     height: .85rem;
     line-height: .85rem;
     font-size: .35rem;
+    & > div{
+      flex: 1;
+    }
+    div:last-child{
+      text-align: right;
+    }
   }
   .new-sch-title{
     height: .61rem;
