@@ -1,23 +1,41 @@
 import React, { Component } from 'react';
 import { DatePicker } from 'antd-mobile';
+import moment from 'moment';
+import { zerofill } from '../Js/utils';
 import CSSModules from 'react-css-modules';
 import TopMenu from '../Component/topMenu/topMenuNewSch';
 import Style from '../Style/newSchedule.scss';
 
-const DateSelect = props => (
-  <div className="new-sch-time new-sch-start"
+const DateSelect = props => {
+  const className = props.type === 'startTime' ? Style['new-sch-start'] : Style['new-sch-end'];
+  return (
+  <div className={Style['new-sch-time'] + ' ' + className}
        onClick={props.onClick}>
     {props.children}
     <span>{props.extra}</span>
   </div>
-);
+  );
+};
 
 class NewSchedule extends Component {
-  state = {
-    dpValue: null,
-    visible: false
+  constructor(props) {
+    super(props);
+    const nowTime = moment();
+    if(nowTime.minute() > 30) {
+      nowTime.hours(nowTime.hours() + 1);
+      nowTime.minute(0);
+    } else {
+      nowTime.minute(30);
+    }
+    const endTime = nowTime.clone();
+    this.state = {
+      startTime: nowTime,
+      endTime: endTime.hours(endTime.hours() + 1)
+    };
   }
   render() {
+    const startTime = this.state.startTime;
+    const endTime = this.state.endTime;
     return (
       <div styleName="new-sch">
         <TopMenu />
@@ -27,18 +45,34 @@ class NewSchedule extends Component {
           <div styleName="new-sch-title">哈哈哈哈</div>
           <div styleName="new-sch-hr"></div>
           <DatePicker
-            mode="date"
-            title="选择日期"
-            extra="请选择(可选)"
-            value={this.state.dpValue}
-            onChange={v => this.setState({ dpValue: v })}
+            mode="datetime1"
+            title="开始日期"
+            extra={zerofill(startTime.hours()) + ':' + zerofill(startTime.minute())}
+            onChange={this.onStartChange}
           >
-            <DateSelect>日期(CST)</DateSelect>
+            <DateSelect type="startTime"></DateSelect>
           </DatePicker>
-          <div styleName="new-sch-time new-sch-end"></div>
+          <DatePicker
+            mode="datetime1"
+            title="结束日期"
+            extra={zerofill(endTime.hours()) + ':' + zerofill(endTime.minute())}
+            onChange={this.onEndChange}
+          >
+            <DateSelect type="endTime"></DateSelect>
+          </DatePicker>
         </div>
       </div>
     );
+  }
+  onStartChange = (date) => {
+    this.setState({
+      startTime: date.clone()
+    });
+  }
+  onEndChange = (date) => {
+    this.setState({
+      endTime: date.clone()
+    });
   }
 }
 
