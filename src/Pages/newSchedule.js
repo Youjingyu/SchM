@@ -29,10 +29,16 @@ class NewSchedule extends Component {
     }
     const endTime = nowTime.clone();
     this.state = {
+      warn: false,
       theme: '',
       startTime: nowTime,
       endTime: endTime.hours(endTime.hours() + 1)
     };
+  }
+  onConfirm = () => {
+    if(!this.state.warn) {
+      this.props.history.push('./');
+    }
   }
   render() {
     const startTime = this.state.startTime;
@@ -40,7 +46,8 @@ class NewSchedule extends Component {
     const weekText = ['日', '一', '二', '三', '四', '五', '六'];
     return (
       <div styleName="new-sch">
-        <TopMenu />
+        <TopMenu onConfirm={this.onConfirm}/>
+        <span style={{display: this.state.warn ? 'inline' : 'none'}} styleName="new-sch-warn">结束时间必须大于开始时间！</span>
         <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" value={this.state.theme} onChange={this.inputOnChange}/>
         <div styleName="new-sch-content">
           <div styleName="new-sch-head">
@@ -87,12 +94,22 @@ class NewSchedule extends Component {
     });
   }
   onStartChange = (date) => {
+    let warn = false;
+    if(!date.isBefore(this.state.endTime)) {
+      warn = true;
+    }
     this.setState({
+      warn: warn,
       startTime: date.clone()
     });
   }
   onEndChange = (date) => {
+    let warn = false;
+    if(date.isBefore(this.state.endTime)) {
+      warn = true;
+    }
     this.setState({
+      warn: warn,
       endTime: date.clone()
     });
   }

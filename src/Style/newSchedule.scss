@@ -1,6 +1,12 @@
 .new-sch{
   height: 17.78rem;
   background-color: #F7F7F7;
+  .new-sch-warn{
+    padding-left: .47rem;
+    font-size: .37rem;
+    line-height: 0.74rem;
+    color: #ff420f;
+  }
   .new-sch-input{
     height: 1.71rem;
     width: 100%;
