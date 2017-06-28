@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
+import { getDeepObjectData } from '@/Js/utils';
 import Style from '../calendar.scss';
 
 class DayBox extends Component {
@@ -13,7 +14,7 @@ class DayBox extends Component {
   render() {
     const date = this.props.date, schData = this.props.schData;
     const year = date.getFullYear(), month = date.getMonth() + 1;
-    const curDaySchData = (schData && schData[year] && schData[year][month] && schData[year][month][this.props.day]) || [];
+    const curDaySchData = getDeepObjectData([year, month, this.props.day], schData) || [];
     let clickActive = '';
     if(this.props.isActiveRow === true && this.props.activeBoxIndex === this.props.boxKey) {
       clickActive = Style['cd-day-box-click-active'];
