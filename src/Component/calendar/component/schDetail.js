@@ -8,8 +8,9 @@ class SchDetail extends Component {
   render() {
     const date = this.props.date || {}, schData = this.props.schData;
     const year = date.getFullYear(), month = date.getMonth() + 1;
-    const curDaySchData = schData && schData[year] && schData[year][month] && schData[year][month][this.props.day];
-    let result = <div styleName="cd-sch-detail-add"><Link to="/newSchedule">添加日程</Link></div>;
+    const day = this.props.day;
+    const curDaySchData = schData && schData[year] && schData[year][month] && schData[year][month][day];
+    let result = <div styleName="cd-sch-detail-add"><Link to={{pathname: '/newSchedule', state: { day: day }}}>添加日程</Link></div>;
     if(curDaySchData) {
       result = curDaySchData.map((val, index) => {
         return (<span key={index}>{val.theme}</span>);

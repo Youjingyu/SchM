@@ -17,7 +17,7 @@ class App extends Component {
   }
   render() {
     const week = ['日', '一', '二', '三', '四', '五', '六'];
-    const days = computeDays(this.props.date);
+    const days = computeDays(new Date(this.props.date.getTime()));
     const schData = this.props.schData;
     return (
     <Hammer onSwipe={this.onSwipe}>

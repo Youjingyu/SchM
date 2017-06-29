@@ -22,7 +22,12 @@ const DateSelect = props => {
 class NewSchedule extends Component {
   constructor(props) {
     super(props);
-    const nowTime = moment();
+    const nowTime = moment(this.props.dateData);
+    const state = this.props.location.state;
+    const day = state && state.day;
+    if(day) {
+      nowTime.date(day);
+    }
     if(nowTime.minute() > 30) {
       nowTime.hours(nowTime.hours() + 1);
       nowTime.minute(0);
@@ -143,7 +148,8 @@ class NewSchedule extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  schData: state.schData
+  schData: state.schData,
+  dateData: state.dateData
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
