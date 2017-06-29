@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
-import { zerofill } from '../Js/utils';
+import { zerofill, setDeepObjectData } from '../Js/utils';
 import CSSModules from 'react-css-modules';
+import { updateSchData } from '@/Redux/Action';
 import TopMenu from '../Component/topMenu/topMenuNewSch';
 import Style from '../Style/newSchedule.scss';
 
@@ -29,16 +31,12 @@ class NewSchedule extends Component {
     }
     const endTime = nowTime.clone();
     this.state = {
-      warn: false,
+      timeWarn: false,
+      themeWarn: false,
       theme: '',
       startTime: nowTime,
       endTime: endTime.hours(endTime.hours() + 1)
     };
-  }
-  onConfirm = () => {
-    if(!this.state.warn) {
-      this.props.history.push('./');
-    }
   }
   render() {
     const startTime = this.state.startTime;
@@ -47,7 +45,8 @@ class NewSchedule extends Component {
     return (
       <div styleName="new-sch">
         <TopMenu onConfirm={this.onConfirm}/>
-        <span style={{display: this.state.warn ? 'inline' : 'none'}} styleName="new-sch-warn">结束时间必须大于开始时间！</span>
+        <span style={{display: this.state.timeWarn ? 'inline' : 'none'}} styleName="new-sch-warn">结束时间必须大于开始时间！</span>
+        <span style={{display: this.state.themeWarn ? 'inline' : 'none'}} styleName="new-sch-warn">请输入主题！</span>
         <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" value={this.state.theme} onChange={this.inputOnChange}/>
         <div styleName="new-sch-content">
           <div styleName="new-sch-head">
@@ -88,9 +87,37 @@ class NewSchedule extends Component {
       </div>
     );
   }
+  onConfirm = () => {
+    if(/^\s*$/.test(this.state.theme)) {
+      this.setState({
+        themeWarn: true
+      });
+    } else {
+      if(!this.state.timeWarn) {
+        let schData = this.props.schData;
+        const state = this.state;
+        const startTime = state.startTime;
+        const year = startTime.year(), month = startTime.month() + 1, day = startTime.date();
+        schData = setDeepObjectData([year, month, day], [{}, {}, []], schData);
+        schData[year][month][day].push({
+          theme: state.theme,
+          startTime: state.startTime.hours() + ':' + state.startTime.minute(),
+          endTime: state.endTime.hours() + ':' + state.endTime.minute()
+        });
+        this.props.updateSchData(schData);
+        this.props.history.push('./');
+      }
+    }
+  }
   inputOnChange = (event) => {
+    const value = event.target.value;
+    if(value !== '') {
+      this.setState({
+        themeWarn: false
+      });
+    }
     this.setState({
-      theme: event.target.value
+      theme: value
     });
   }
   onStartChange = (date) => {
@@ -99,7 +126,7 @@ class NewSchedule extends Component {
       warn = true;
     }
     this.setState({
-      warn: warn,
+      timeWarn: warn,
       startTime: date.clone()
     });
   }
@@ -109,10 +136,20 @@ class NewSchedule extends Component {
       warn = true;
     }
     this.setState({
-      warn: warn,
+      timeWarn: warn,
       endTime: date.clone()
     });
   }
 }
 
-export default CSSModules(NewSchedule, Style, {allowMultiple: true});
+const mapStateToProps = (state, ownProps) => ({
+  schData: state.schData
+});
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  updateSchData: (schData) => {
+    dispatch(updateSchData(schData));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(NewSchedule, Style, {allowMultiple: true}));

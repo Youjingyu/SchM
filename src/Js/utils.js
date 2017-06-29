@@ -9,5 +9,11 @@ export const getDeepObjectData = (keyArr, dataObject) => {
 };
 
 export const setDeepObjectData = (keyArr, setValue, dataObject) => {
-
+  keyArr.reduce(function (data, key, i) {
+    if(!(data && data[key])) {
+      data[key] = setValue[i];
+    }
+    return data[key];
+  }, dataObject);
+  return dataObject;
 };
