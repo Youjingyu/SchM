@@ -51,6 +51,7 @@ class NewSchedule extends Component {
       <div styleName="new-sch">
         <TopMenu onConfirm={this.onConfirm}/>
         <span style={{display: this.state.timeWarn ? 'inline' : 'none'}} styleName="new-sch-warn">结束时间必须大于开始时间！</span>
+        <br />
         <span style={{display: this.state.themeWarn ? 'inline' : 'none'}} styleName="new-sch-warn">请输入主题！</span>
         <input styleName="new-sch-input" placeholder="例如：明天上午九点开会" value={this.state.theme} onChange={this.inputOnChange}/>
         <div styleName="new-sch-content">
