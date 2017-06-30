@@ -74,6 +74,7 @@ class NewSchedule extends Component {
           <div styleName="new-sch-hr"></div>
           <DatePicker
             mode="datetime1"
+            defaultDate={startTime}
             title="开始日期"
             extra={zerofill(startTime.hours()) + ':' + zerofill(startTime.minute())}
             onChange={this.onStartChange}
@@ -82,6 +83,7 @@ class NewSchedule extends Component {
           </DatePicker>
           <DatePicker
             mode="datetime1"
+            defaultDate={endTime}
             title="结束日期"
             extra={zerofill(endTime.hours()) + ':' + zerofill(endTime.minute())}
             onChange={this.onEndChange}
