@@ -5,8 +5,8 @@ import thunk from 'redux-thunk';
 const preloadedState = {
   schData: {
     2017: {
-      5: {
-        10: [{theme: 'oooo'}]
+      8: {
+        10: [{theme: 'oooo', type: 1, startTime: '09:00', endTime: '10:00'}]
       }
     }
   },

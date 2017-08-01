@@ -30,7 +30,7 @@ class CalendarRow extends Component {
         </div>
         <SchDetail isShow={isActiveRow} day={this.state.activeDay}
                    date={date} schData={schData}
-                   height={rowHeight * (rowLength - 2) + 'rem'}/>
+                   height={rowHeight * (rowLength - 2)}/>
       </div>
     );
   }

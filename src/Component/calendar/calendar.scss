@@ -1,5 +1,13 @@
 @import 'variable';
 .calendar{
+  .clearfix:before,
+  .clearfix:after {
+    content: " ";
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+  }
   //height: 13.88rem;
   //overflow: hidden;
   .cd-head{
@@ -35,6 +43,7 @@
     border-bottom: 1px solid $grey;
     background-color: $lightGrey;
     position: relative;
+    font-size: 16px;
     .cd-sch-detail-add{
       position: absolute;
       top: 0;
@@ -44,8 +53,26 @@
       margin: auto;
       text-align: center;
       height: 16px;
-      font-size: 16px;
       line-height: 100%;
+    }
+    .cd-sch-detail-item{
+      display: flex;
+      align-items: center;
+      height: 25%;
+    }
+    .cd-sch-detail-line{
+      flex: 1;
+      height: 30%;
+      div{
+        width: 5px;
+        height: 100%;
+      }
+    }
+    .cd-sch-detail-time{
+      flex: 2;
+    }
+    .cd-sch-detail-theme{
+      flex: 8;
     }
   }
 }

@@ -17,3 +17,8 @@ export const setDeepObjectData = (keyArr, setValue, dataObject) => {
   }, dataObject);
   return dataObject;
 };
+
+export const computeSchTypeColor = (level) => {
+  const colorArr = ['', '#FF9600'];
+  return colorArr[parseInt(level)];
+};
