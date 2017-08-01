@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import Hammer from 'react-hammerjs';
-import { getDeepObjectData } from '@/Js/utils';
+import { getDeepObjectData, computeSchTypeColor } from '@/Js/utils';
 import Style from '../calendar.scss';
 
 class DayBox extends Component {
@@ -23,9 +23,9 @@ class DayBox extends Component {
     return (
     <Hammer onTap={this.onTap}>
       <div className={className}>
-        <span>{this.props.day}</span>
+        <div>{this.props.day}</div>
         {curDaySchData.map((val, index) => {
-          return <span key={index}>{val.theme}</span>;
+          return <div key={index} styleName="cd-day-box-sch" style={{backgroundColor: computeSchTypeColor(val.type)}}>{val.theme}</div>;
         })}
       </div>
     </Hammer>

@@ -24,7 +24,7 @@
   }
   .cd-head, .cd-content{
     display: flex;
-    div{
+    & > div{
       flex: 1;
       border-left: 1px solid $grey;
     }
@@ -38,6 +38,11 @@
   .cd-day-box-click-active{
     margin-bottom: -1px;
     background-color: $lightGrey;
+  }
+  .cd-day-box-sch{
+    margin: 3px 1px 0;
+    height: 20px;
+    line-height: 20px;
   }
   .cd-sch-detail{
     border-bottom: 1px solid $grey;
